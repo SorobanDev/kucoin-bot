@@ -168,4 +168,6 @@ async function fetchOrdersSequentially() {
   }
 }
 
+const PORT = process.env.PORT || 3000;
+
 fetchOrdersSequentially();
