@@ -107,7 +107,7 @@ async function fetchOrder() {
 
   const sellPrice = top20Bids[0][0];
   const maxPriceSupply = top20Asks[0][0] + 0.00002;
-  console.log("the prices array", prices.getArray());
+  // console.log("the prices array", prices.getArray());
 
   if (prices.getArray().length > 1) {
     if (prices.calculateRegressionSlope()[0] < -1000) {
@@ -138,12 +138,7 @@ async function fetchOrder() {
     }
   }
 
-  console.log(balance);
-}
-
-async function getSymbols() {
-  const res = await axios.get(`${BASE_URL}/api/v1/contracts/active`);
-  console.log(res.data);
+  // console.log(balance);
 }
 
 // async function fetchOrdersSequentially() {
@@ -159,7 +154,7 @@ async function fetchOrdersSequentially() {
     try {
       await fetchOrder();
       if (prices.getArray().length > 1) {
-        console.log("slope is", prices.calculateRegressionSlope());
+        // console.log("slope is", prices.calculateRegressionSlope());
       }
       await new Promise((resolve) => setTimeout(resolve, 1000));
     } catch (e) {
