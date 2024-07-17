@@ -155,7 +155,7 @@ async function fetchOrdersSequentially() {
     try {
       await fetchOrder();
       if (prices.getArray().length > 1) {
-        // console.log("slope is", prices.calculateRegressionSlope());
+        console.log("slope is", prices.calculateRegressionSlope());
       }
       await new Promise((resolve) => setTimeout(resolve, 1000));
     } catch (e) {
@@ -173,6 +173,6 @@ http
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Hello World!");
   })
-  .listen(port, () => {
-    console.log(`Server running on port ${port}`);
+  .listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
   });
