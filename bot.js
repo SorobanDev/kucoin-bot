@@ -67,7 +67,7 @@ class PricesArray {
   }
 }
 
-const prices = new PricesArray(3);
+const prices = new PricesArray(5);
 
 const symbol = "NOTUSDTM";
 
@@ -79,7 +79,7 @@ async function fetchOrder() {
   );
 
   const orders = res.data;
-  const top20Bids = orders.data.bids.slice(0, 20);
+  const top20Bids = orders.data.bids.slice(0, 5);
 
   prices.addElement(top20Bids[0][0]);
 
@@ -91,6 +91,7 @@ async function fetchOrder() {
   }
 
   const balance = (await kucoin.fetchBalance())?.info?.data?.positionMargin;
+  const profit = (await kucoin.fetchBalance())?.info?.data?.unrealisedPNL;
 
   if (prices.getArray().length > 1) {
     if (prices.calculateRegressionSlope()[1] > 3500 && balance === 0) {
@@ -101,7 +102,7 @@ async function fetchOrder() {
 
     if (
       prices.calculateRegressionSlope()[0] <
-        prices.calculateRegressionSlope()[1] / 1.5 &&
+        prices.calculateRegressionSlope()[1] * 0.9 &&
       balance > 0
     ) {
       await kucoin.createOrder(symbol, "market", "sell", 750, "", {
