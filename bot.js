@@ -63,7 +63,6 @@ class PricesArray {
     }
 
     return [sum, sumMax];
-    // return factorSlope, sum;
   }
 }
 
