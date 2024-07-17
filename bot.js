@@ -67,7 +67,7 @@ class PricesArray {
   }
 }
 
-const prices = new PricesArray(2);
+const prices = new PricesArray(3);
 
 const symbol = "NOTUSDTM";
 const btcSymbol = "BTC/USDT";
