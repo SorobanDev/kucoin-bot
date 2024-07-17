@@ -1,5 +1,6 @@
 var ccxt = require("ccxt");
 var axios = require("axios");
+const http = require("http");
 require("dotenv").config();
 const exchanges = ccxt.exchanges;
 const kucoin = new ccxt.kucoinfutures({
@@ -166,3 +167,12 @@ async function fetchOrdersSequentially() {
 const PORT = process.env.PORT || 3000;
 
 fetchOrdersSequentially();
+
+http
+  .createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello World!");
+  })
+  .listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
